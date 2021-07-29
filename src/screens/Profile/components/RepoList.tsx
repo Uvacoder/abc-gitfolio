@@ -5,9 +5,9 @@ import Repo from "./Repo";
 export default function RepoList() {
   return (
     <div className="w-full mx-auto">
-      <div className="mx-auto bg-white border border-gray rounded-md w-10/12 mt-8 ">
+      <div className="mx-auto bg-white border border-gray rounded-md w-10/12 my-8 ">
         <Header />
-        <div className="flex flex-row flex-wrap justify-center items-center">
+        <div className="flex flex-row flex-wrap justify-center items-center py-4">
           {random.map((e, index) => {
             return <Repo key={index} />;
           })}
