@@ -3,7 +3,7 @@ import Logo from "../../assets/images/logo-gitfolio.svg";
 export default function Navbar() {
   const [onPhoneNav, setOnPhoneNav] = useState(false);
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+    <nav className="bg-white flex items-center justify-between flex-wrap bg-teal-500 p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
         <img src={Logo} alt="" className="mr-3 w-10" />
         <span className="gradient-text font-bold text-2xl tracking-tight">
@@ -32,7 +32,7 @@ export default function Navbar() {
       >
         <a
           href="https://github.com"
-          className="inline-block text-sm font-medium px-4 py-2 leading-none border rounded border-secondary text-secondary mt-4 lg:mt-0"
+          className="inline-block text-sm font-medium px-4 py-3 leading-none border rounded border-secondary text-secondary mt-4 lg:mt-0"
         >
           Explore More
         </a>

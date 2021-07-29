@@ -1,11 +1,13 @@
-import Navbar from "../../shared/components/navbar";
 import Hero from "./components/Hero";
+import ProfileCard from "./components/ProfileCard";
+import Profiles from "./components/Profiles";
 
 export default function Landing() {
   return (
     <>
-      <Navbar />
       <Hero />
+
+      <Profiles />
     </>
   );
 }
