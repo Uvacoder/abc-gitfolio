@@ -7,6 +7,7 @@ module.exports = {
       gray: "#dcdcdc",
       primary: "#6AB5FF",
       secondary: "#AE5AFF",
+      lightgray: "#EEEEEE",
     },
     zIndex: {
       "-10": "-10",

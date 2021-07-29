@@ -7,8 +7,8 @@ import Twitter from "../../../assets/images/twitter.svg";
 
 export default function Head() {
   return (
-    <div className="rlative w-full mx-auto">
-      <div className="absolute top-0 left-0 right-0 gradient-bg h-72 w-screen -z-10" />
+    <div className="w-full mx-auto">
+      <div className="absolute top-0 left-0 right-0 gradient-bg h-72 -z-10" />
       <div className="relative bg-white mx-auto border border-gray rounded-md w-10/12 mt-32 flex flex-col md:flex-row p-6 gap-5">
         <div className="absolute right-0 top-0 flex m-6 gap-4">
           <img src={Link} alt="" />
