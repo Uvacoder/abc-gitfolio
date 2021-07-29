@@ -1,6 +1,6 @@
 function App() {
   return (
-    <div className="bg-pink-800 h-screen w-screen">
+    <div className="bg-primary h-screen w-screen">
       <header>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.

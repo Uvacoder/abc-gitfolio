@@ -18,11 +18,13 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "npm run extract:css && react-scripts start",
-    "build": "npm run extract:css && react-scripts build",
+    "start": "yarn build:css && react-scripts start",
+    "dev": "npx concurrently \"yarn watch:css\" \"react-scripts start\"",
+    "build": "yarn build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "extract:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
+    "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
+    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css -w"
   },
   "eslintConfig": {
     "extends": [
