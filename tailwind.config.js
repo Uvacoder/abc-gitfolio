@@ -8,6 +8,9 @@ module.exports = {
       primary: "#6AB5FF",
       secondary: "#AE5AFF",
     },
+    zIndex: {
+      "-10": "-10",
+    },
     extend: {},
   },
   variants: {

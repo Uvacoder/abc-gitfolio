@@ -3,6 +3,7 @@ import Landing from "./screens/Landing/Landing";
 
 import { createBrowserHistory } from "history";
 import Navbar from "./shared/components/navbar";
+import Profile from "./screens/Profile/Profile";
 
 function App() {
   const history = createBrowserHistory();
@@ -13,6 +14,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Landing />
+          </Route>
+          <Route exact path="/profile">
+            <Profile />
           </Route>
         </Switch>
       </>
