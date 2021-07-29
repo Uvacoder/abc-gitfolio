@@ -15,3 +15,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #6ab5ff -1.44%,
+    #6ab5ff -1.43%,
+    #ae5aff 101.18%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(
+    90deg,
+    #6ab5ff -1.44%,
+    #6ab5ff -1.43%,
+    #ae5aff 101.18%
+  );
+}
