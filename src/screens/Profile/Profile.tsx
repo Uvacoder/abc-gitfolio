@@ -10,18 +10,18 @@ import Loader from "../../shared/components/Loader";
 
 export default function Profile() {
   const { id } = useParams<{ id: string }>();
-  const [user, setUser] = useState();
-  const [repoDetails, setRepoDetails] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<any>();
+  const [repoDetails, setRepoDetails] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     (async () => {
       try {
-        const allPromise = await Promise.all([
+        const promises = await Promise.all([
           getUserDetails(id),
           getFewUserRepos(id, 10),
         ]);
-        setUser(allPromise[0]);
-        setRepoDetails(allPromise[1]);
+        setUser(promises[0]);
+        setRepoDetails(promises[1]);
       } catch (err) {
         toast.error("No user found!");
         console.log(err.data);

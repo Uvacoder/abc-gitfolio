@@ -6,7 +6,11 @@ import Link from "../../../assets/images/link.svg";
 import Twitter from "../../../assets/images/twitter.svg";
 import User from "../../../assets/images/user.svg";
 
-export default function Head({ user }: any) {
+interface Props {
+  user: any;
+}
+
+export default function Head({ user }: Props) {
   return (
     <div className="w-full mx-auto">
       <div className="absolute top-0 left-0 right-0 gradient-bg h-72 -z-10" />

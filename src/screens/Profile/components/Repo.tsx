@@ -2,7 +2,11 @@ import IconText from "../../../shared/components/IconText";
 import Star from "../../../assets/images/star.svg";
 import Fork from "../../../assets/images/fork.svg";
 
-export default function Repo({ repo }: any) {
+interface Props {
+  repo: any;
+}
+
+export default function Repo({ repo }: Props) {
   return (
     <a href={repo.html_url} target="_blank" rel="noreferrer">
       <div className="bg-white border rounded border-lightgray flex flex-col w-64  h-48 lg:w-96 p-6 m-2 justify-between">

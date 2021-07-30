@@ -22,7 +22,6 @@ export default function Modal({ modalData, setModal }: any) {
       }
     })();
   }, [modalData.full_name]);
-  console.log(modalData);
   return (
     <>
       <div className="fixed top-0 right-0 bg-black opacity-50 h-full w-full"></div>

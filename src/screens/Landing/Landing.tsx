@@ -55,12 +55,13 @@ export default function Landing() {
         <div className="p-8 mt-6 w-full">
           <div className="bg-white flex mx-auto justify-center items-center rounded-full shadow-xl w-3/4 md:w-1/2">
             <input
-              className="rounded-l-full w-10/12 py-4 px-6 text-gray-700 leading-tight focus:outline-none"
+              className="rounded-l-full cursor-not-allowed w-10/12 py-4 px-6 text-gray-700 leading-tight focus:outline-none"
               id="search"
               type="text"
               value={search}
               onChange={(event) => updateSearch(event?.target.value)}
-              placeholder="Find some awesome developers here! (still in progress)"
+              placeholder="Search for devs [FEATURE : WORK IN PROGRESS]"
+              disabled
             />
             {search && search.length && (
               <div className="p-4">
@@ -80,7 +81,7 @@ export default function Landing() {
         loadOnMount={true}
         classNames="flex flex-row flex-wrap justify-center items-center mt-10"
       >
-        {users.map((user, index) => {
+        {users.map((user: any, index: number) => {
           return <ProfileCard user={user} key={index} />;
         })}
       </InfiniteScroll>

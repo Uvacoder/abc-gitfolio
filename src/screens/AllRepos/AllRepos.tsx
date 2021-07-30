@@ -1,23 +1,24 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import { getUserRepos } from "../../shared/api";
 import IconText from "../../shared/components/IconText";
 import InfiniteScroll from "../../shared/components/InfiniteScroll";
+import Modal from "./Modal";
+import ErrorScreen from "../../shared/components/ErrorScreen";
+
 import Star from "../../assets/images/star.svg";
 import Fork from "../../assets/images/fork.svg";
 import Issues from "../../assets/images/issues.svg";
 import NotFound from "../../assets/images/vectors/notfound.svg";
 
-import { toast } from "react-toastify";
-import ErrorScreen from "../../shared/components/ErrorScreen";
-import Modal from "./Modal";
-
 export default function AllRepos() {
   const { id } = useParams<{ id: string }>();
   const [repos, setRepos] = useState<any[]>([]);
-  const [page, setPage] = useState(1);
-  const [hasMoreData, setHasMoreData] = useState(true);
-  const [modal, setModal] = useState(false);
+  const [page, setPage] = useState<number>(1);
+  const [hasMoreData, setHasMoreData] = useState<boolean>(true);
+  const [modal, setModal] = useState<boolean>(false);
   const [modalData, setModalData] = useState<any>({});
 
   const [loading, setLoading] = useState(false);
@@ -63,7 +64,7 @@ export default function AllRepos() {
           loadOnMount={true}
           classNames=""
         >
-          {repos.map((repo, index) => {
+          {repos.map((repo: any, index: number) => {
             return (
               <Repo
                 repo={repo}
