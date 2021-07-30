@@ -12,9 +12,9 @@ export default function Landing() {
   const updateSearch = (value: any) => {
     // Add debouncing
     setSearch(value);
-    console.log(value);
-    serUsers([]);
-    loadMoreUsers();
+    // console.log(value);
+    // serUsers([]);
+    // loadMoreUsers();
   };
 
   const hasMoreData = users.length < 1000;
@@ -22,23 +22,23 @@ export default function Landing() {
 
   const loadMoreUsers = () => {
     setLoading(true);
-    if (search) {
-      setTimeout(async () => {
-        const newUsers = await searchUsers(search);
-        const last = newUsers[PER_PAGE - 1].id;
-        setPage((page) => page + last);
-        serUsers((nums) => [...nums, ...newUsers]);
-        setLoading(false);
-      }, 300);
-    } else {
-      setTimeout(async () => {
-        const newUsers = await getUser(page);
-        const last = newUsers[PER_PAGE - 1].id;
-        setPage((page) => page + last);
-        serUsers((nums) => [...nums, ...newUsers]);
-        setLoading(false);
-      }, 300);
-    }
+    // if (search) {
+    //   setTimeout(async () => {
+    //     const newUsers = await searchUsers(search);
+    //     const last = newUsers[PER_PAGE - 1].id;
+    //     setPage((page) => page + last);
+    //     serUsers((nums) => [...nums, ...newUsers]);
+    //     setLoading(false);
+    //   }, 300);
+    // } else {
+    setTimeout(async () => {
+      const newUsers = await getUser(page);
+      const last = newUsers[PER_PAGE - 1].id;
+      setPage((page) => page + last);
+      serUsers((nums) => [...nums, ...newUsers]);
+      setLoading(false);
+    }, 300);
+    // }
   };
 
   return (
