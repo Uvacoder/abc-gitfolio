@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { getUser } from "../../shared/api/api";
+import { getUser } from "../../shared/api";
 import InfiniteScroll from "../../shared/components/InfiniteScroll";
 import ProfileCard from "./components/ProfileCard";
 

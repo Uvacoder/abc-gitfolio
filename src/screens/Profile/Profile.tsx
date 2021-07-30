@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getFewUserRepos, getUserDetails } from "../../shared/api/api";
+import { getFewUserRepos, getUserDetails } from "../../shared/api";
 import ErrorScreen from "../../shared/components/ErrorScreen";
 import Head from "./components/Head";
 import RepoList from "./components/RepoList";

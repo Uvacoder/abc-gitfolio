@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_ENDPOINTS } from "../constant";
+import { API_ENDPOINTS } from "./constant";
 
 export async function getUserDetails(username : string){
    const {data} = await  axios.get(API_ENDPOINTS.BASE + API_ENDPOINTS.USER_DETAILS(username));
@@ -29,4 +29,9 @@ export async function getUser(page : number){
 export async function searchUsers(searchQuery : string){
    const {data} = await  axios.get( API_ENDPOINTS.BASE + API_ENDPOINTS.SEARCH_USERS + searchQuery);
    return data.items;
+}
+
+export async function getRepoDetails(fullname : string){
+   const {data} = await  axios.get(API_ENDPOINTS.BASE + API_ENDPOINTS.REPOS + "/" +  fullname);
+   return data;
 }

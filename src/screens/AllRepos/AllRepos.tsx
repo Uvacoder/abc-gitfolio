@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { getUserRepos } from "../../shared/api/api";
+import { getUserRepos } from "../../shared/api";
 import IconText from "../../shared/components/IconText";
 import InfiniteScroll from "../../shared/components/InfiniteScroll";
 import Star from "../../assets/images/star.svg";
@@ -10,12 +10,15 @@ import NotFound from "../../assets/images/vectors/notfound.svg";
 
 import { toast } from "react-toastify";
 import ErrorScreen from "../../shared/components/ErrorScreen";
+import Modal from "./Modal";
 
 export default function AllRepos() {
   const { id } = useParams<{ id: string }>();
   const [repos, setRepos] = useState<any[]>([]);
   const [page, setPage] = useState(1);
   const [hasMoreData, setHasMoreData] = useState(true);
+  const [modal, setModal] = useState(false);
+  const [modalData, setModalData] = useState<any>({});
 
   const [loading, setLoading] = useState(false);
   const loadMoreRepositories = async () => {
@@ -47,21 +50,33 @@ export default function AllRepos() {
   }
 
   return (
-    <div className="bg-white w-11/12 mx-auto mt-20 border border-gray rounded-md my-8">
-      <Header id={id} />
-      <InfiniteScroll
-        hasMoreData={hasMoreData}
-        isLoading={loading}
-        onBottomHit={loadMoreRepositories}
-        loadOnMount={true}
-        classNames=""
-      >
-        {repos.map((repo, index) => {
-          return <Repo repo={repo} key={index} />;
-        })}
-      </InfiniteScroll>
-      {loading && <div className="loader-small my-20"></div>}
-    </div>
+    <>
+      {modal && modalData && (
+        <Modal setModal={setModal} modalData={modalData} />
+      )}
+      <div className="bg-white w-11/12 mx-auto mt-20 border border-gray rounded-md my-8">
+        <Header id={id} />
+        <InfiniteScroll
+          hasMoreData={hasMoreData}
+          isLoading={loading}
+          onBottomHit={loadMoreRepositories}
+          loadOnMount={true}
+          classNames=""
+        >
+          {repos.map((repo, index) => {
+            return (
+              <Repo
+                repo={repo}
+                key={index}
+                setModal={setModal}
+                setModalData={setModalData}
+              />
+            );
+          })}
+        </InfiniteScroll>
+        {loading && <div className="loader-small my-20"></div>}
+      </div>
+    </>
   );
 }
 
@@ -76,13 +91,16 @@ export function Header({ id }: Props) {
   );
 }
 
-export function Repo({ repo }: any) {
+export function Repo({ repo, setModal, setModalData }: any) {
   return (
-    <a
-      href={repo.html_url}
-      className="flex flex-col sm:flex-row p-6 justify-between items-center border mx-4 sm:mx-8 my-4 border-primary rounded-md"
+    <div
+      className="flex flex-col cursor-pointer sm:flex-row p-6 justify-between items-center border mx-4 sm:mx-8 my-4 border-primary rounded-md"
+      onClick={() => {
+        setModal(true);
+        setModalData(repo);
+      }}
     >
-      <div className="flex flex-col gap-2 sm:w-10/12 xl:w-11/12">
+      <div className="flex flex-col gap-2 w-full">
         <h1 className="font-bold text-2xl gradient-text">{repo.name}</h1>
         <p>
           {repo.description ||
@@ -96,11 +114,11 @@ export function Repo({ repo }: any) {
       </div>
       <div className="sm:w-2/12 xl:w-1/12 mt-4 sm:mt-0">
         {repo.language && (
-          <p className="border-primary text-primary border-2 rounded-full px-2 py-1 text-center">
+          <p className="border-primary text-primary border-2 rounded-lg px-2 py-1 text-center">
             {repo.language}
           </p>
         )}
       </div>
-    </a>
+    </div>
   );
 }

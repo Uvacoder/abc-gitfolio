@@ -5,6 +5,7 @@ module.exports = {
     colors: {
       white: "#fff",
       gray: "#dcdcdc",
+      black: "#000",
       primary: "#6AB5FF",
       secondary: "#AE5AFF",
       lightgray: "#EEEEEE",
@@ -15,6 +16,10 @@ module.exports = {
     },
     minHeight: {
       "87vh": "87vh",
+      80: "20rem",
+    },
+    minWidth: {
+      "87vw": "70vw",
     },
     extend: {},
   },
