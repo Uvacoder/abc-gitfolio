@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { getUser } from "../../shared/api/api";
 import InfiniteScroll from "../../shared/components/InfiniteScroll";
 import ProfileCard from "./components/ProfileCard";
@@ -20,18 +21,16 @@ export default function Landing() {
 
   const PER_PAGE = 30;
 
-  const loadMoreUsers = () => {
+  const loadMoreUsers = async () => {
     setLoading(true);
     // if (search) {
-    //   setTimeout(async () => {
     //     const newUsers = await searchUsers(search);
     //     const last = newUsers[PER_PAGE - 1].id;
     //     setPage((page) => page + last);
     //     serUsers((nums) => [...nums, ...newUsers]);
     //     setLoading(false);
-    //   }, 300);
     // } else {
-    setTimeout(async () => {
+    try {
       const newUsers = await getUser(page);
       if (newUsers.length === 0) {
         setHasMoreData(false);
@@ -39,8 +38,11 @@ export default function Landing() {
       const last = newUsers[PER_PAGE - 1].id;
       setPage((page) => page + last);
       serUsers((nums) => [...nums, ...newUsers]);
-      setLoading(false);
-    }, 300);
+    } catch (err) {
+      setHasMoreData(false);
+      toast.error("Some unknown error occured!");
+    }
+    setLoading(false);
     // }
   };
 
