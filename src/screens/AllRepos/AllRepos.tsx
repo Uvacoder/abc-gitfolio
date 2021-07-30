@@ -78,7 +78,10 @@ export function Header({ id }: Props) {
 
 export function Repo({ repo }: any) {
   return (
-    <div className="flex flex-col sm:flex-row p-6 justify-between items-center border mx-4 sm:mx-8 my-4 border-primary rounded-md">
+    <a
+      href={repo.html_url}
+      className="flex flex-col sm:flex-row p-6 justify-between items-center border mx-4 sm:mx-8 my-4 border-primary rounded-md"
+    >
       <div className="flex flex-col gap-2 sm:w-10/12 xl:w-11/12">
         <h1 className="font-bold text-2xl gradient-text">{repo.name}</h1>
         <p>
@@ -92,10 +95,12 @@ export function Repo({ repo }: any) {
         </div>
       </div>
       <div className="sm:w-2/12 xl:w-1/12 mt-4 sm:mt-0">
-        <p className="border-primary text-primary border-2 rounded-full px-2 py-1 text-center">
-          {repo.language}
-        </p>
+        {repo.language && (
+          <p className="border-primary text-primary border-2 rounded-full px-2 py-1 text-center">
+            {repo.language}
+          </p>
+        )}
       </div>
-    </div>
+    </a>
   );
 }
