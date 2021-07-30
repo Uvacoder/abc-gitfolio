@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getUser, searchUsers } from "../../shared/api/api";
+import { getUser } from "../../shared/api/api";
 import InfiniteScroll from "../../shared/components/InfiniteScroll";
 import ProfileCard from "./components/ProfileCard";
 
@@ -8,6 +8,7 @@ export default function Landing() {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState("");
+  const [hasMoreData, setHasMoreData] = useState(true);
 
   const updateSearch = (value: any) => {
     // Add debouncing
@@ -17,7 +18,6 @@ export default function Landing() {
     // loadMoreUsers();
   };
 
-  const hasMoreData = users.length < 1000;
   const PER_PAGE = 30;
 
   const loadMoreUsers = () => {
@@ -33,6 +33,9 @@ export default function Landing() {
     // } else {
     setTimeout(async () => {
       const newUsers = await getUser(page);
+      if (newUsers.length === 0) {
+        setHasMoreData(false);
+      }
       const last = newUsers[PER_PAGE - 1].id;
       setPage((page) => page + last);
       serUsers((nums) => [...nums, ...newUsers]);

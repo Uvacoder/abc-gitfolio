@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getUserDetails, getUserRepos } from "../../shared/api/api";
+import { getFewUserRepos, getUserDetails } from "../../shared/api/api";
 import ErrorScreen from "../../shared/components/ErrorScreen";
 import Head from "./components/Head";
 import RepoList from "./components/RepoList";
@@ -18,7 +18,7 @@ export default function Profile() {
       try {
         const allPromise = await Promise.all([
           getUserDetails(id),
-          getUserRepos(id, 10),
+          getFewUserRepos(id, 10),
         ]);
         setUser(allPromise[0]);
         setRepoDetails(allPromise[1]);
@@ -45,7 +45,7 @@ export default function Profile() {
   return (
     <div className="relative flex justify-start flex-col">
       <Head user={user} />
-      <RepoList repoDetails={repoDetails} />
+      <RepoList repoDetails={repoDetails} user={user} />
     </div>
   );
 }

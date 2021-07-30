@@ -14,27 +14,24 @@ export default function AllRepos() {
   const [hasMoreData, setHasMoreData] = useState(true);
 
   const [loading, setLoading] = useState(false);
-  const loadMoreUsers = () => {
+  const loadMoreRepositories = async () => {
     setLoading(true);
-    setTimeout(async () => {
-      const newUsers = await getUserRepos(id, page);
-      if (newUsers.length === 0) {
-        setHasMoreData(false);
-      }
-      setPage((page) => page + 1);
-      setRepos((nums: any) => [...nums, ...newUsers]);
-      setLoading(false);
-    }, 300);
-    // }
+    const newRepos = await getUserRepos(id, page);
+    if (newRepos.length === 0) {
+      setHasMoreData(false);
+    }
+    setPage((page) => page + 1);
+    setRepos((nums: any) => [...nums, ...newRepos]);
+    setLoading(false);
   };
 
   return (
     <div className="bg-white w-11/12 mx-auto mt-20 border border-gray rounded-md my-8">
-      <Header />
+      <Header id={id} />
       <InfiniteScroll
         hasMoreData={hasMoreData}
         isLoading={loading}
-        onBottomHit={loadMoreUsers}
+        onBottomHit={loadMoreRepositories}
         loadOnMount={true}
         classNames=""
       >
@@ -48,10 +45,13 @@ export default function AllRepos() {
   );
 }
 
-export function Header() {
+interface Props {
+  id: string;
+}
+export function Header({ id }: Props) {
   return (
     <div className="flex p-6 justify-between border-gray border-b mb-6">
-      <h1 className="font-bold">User's Repository</h1>
+      <h1 className="font-bold">{id}'s Repository</h1>
     </div>
   );
 }

@@ -13,6 +13,14 @@ export async function getUserRepos(username : string,page : number){
    const {data} = await  axios.get(API_ENDPOINTS.BASE + API_ENDPOINTS.USER_REPOS(username)+query);
    return data;
 }
+export async function getFewUserRepos(username : string,per_page : number){
+   let query = "?";
+   if(per_page){
+      query = query  + "per_page="+ per_page
+   }
+   const {data} = await  axios.get(API_ENDPOINTS.BASE + API_ENDPOINTS.USER_REPOS(username)+query);
+   return data;
+}
 
 export async function getUser(page : number){
    const {data} = await  axios.get(API_ENDPOINTS.BASE + API_ENDPOINTS.LIST_USERS + "?since=" + page);
