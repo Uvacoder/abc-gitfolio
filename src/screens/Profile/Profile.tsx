@@ -6,6 +6,7 @@ import ErrorScreen from "../../shared/components/ErrorScreen";
 import Head from "./components/Head";
 import RepoList from "./components/RepoList";
 import NotFound from "../../assets/images/vectors/notfound.svg";
+import Loader from "../../shared/components/Loader";
 
 export default function Profile() {
   const { id } = useParams<{ id: string }>();
@@ -29,7 +30,7 @@ export default function Profile() {
     })();
   }, [id]);
   if (loading) {
-    return <div>Loading</div>;
+    return <Loader />;
   }
   if (!user) {
     return (

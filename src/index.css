@@ -32,8 +32,45 @@ code {
 .gradient-bg {
   background: linear-gradient(
     90deg,
-    #6ab5ff -1.44%,
+    #dfeefd -1.44%,
     #6ab5ff -1.43%,
     #ae5aff 101.18%
   );
+}
+
+.loader {
+  width: 30px;
+  height: 30px;
+  animation: loading 1s infinite ease-out;
+  margin: auto;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    #dfeefd -1.44%,
+    #6ab5ff -1.43%,
+    #ae5aff 101.18%
+  );
+}
+.loader-small {
+  width: 10px;
+  height: 10px;
+  animation: loading 1s infinite ease-out;
+  margin: auto;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    #dfeefd -1.44%,
+    #6ab5ff -1.43%,
+    #ae5aff 101.18%
+  );
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(8);
+    opacity: 0;
+  }
 }

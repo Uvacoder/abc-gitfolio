@@ -79,7 +79,7 @@ export default function Landing() {
           return <ProfileCard user={user} key={index} />;
         })}
       </InfiniteScroll>
-      {loading && <div>Loading</div>}
+      {loading && <div className="loader-small my-20"></div>}
     </>
   );
 }
