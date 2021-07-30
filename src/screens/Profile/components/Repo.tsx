@@ -2,18 +2,18 @@ import IconText from "../../../shared/components/IconText";
 
 import Star from "../../../assets/images/star.svg";
 import Fork from "../../../assets/images/fork.svg";
-export default function Repo() {
+export default function Repo({ repo }: any) {
   return (
     <div>
-      <div className="bg-white border rounded border-lightgray flex flex-col max-w-sm p-6 gap-3 m-2">
-        <h1 className="font-medium gradient-text text-xl">18CSC304J-CD-LAB</h1>
-        <p className="text-darkgray">
-          A supercalifragilisticexpialidocious developer Portfolio, Built on
-          NextJS.
+      <div className="bg-white border rounded border-lightgray flex flex-col w-11/12 lg:w-96 p-6 gap-3 m-2">
+        <h1 className="font-medium gradient-text text-xl">{repo.name}</h1>
+        <p className="text-darkgray break-words">
+          {repo.description ||
+            "There's no description for this repository as of now!"}
         </p>
         <div className="flex gap-2">
-          <IconText text="123" img={Star} />
-          <IconText text="123" img={Fork} />
+          <IconText text={repo.stargazers_count} img={Star} />
+          <IconText text={repo.forks_count} img={Fork} />
         </div>
       </div>
     </div>

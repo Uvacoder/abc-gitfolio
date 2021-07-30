@@ -1,16 +1,20 @@
 import Link from "../../../assets/images/open.svg";
-import { random } from "../../../shared/constant";
 import Repo from "./Repo";
 
-export default function RepoList() {
+export default function RepoList({ repoDetails }: any) {
+  console.log(repoDetails);
   return (
     <div className="w-full mx-auto">
       <div className="mx-auto bg-white border border-gray rounded-md w-10/12 my-8 ">
         <Header />
         <div className="flex flex-row flex-wrap justify-center items-center py-4">
-          {random.map((e, index) => {
-            return <Repo key={index} />;
-          })}
+          {repoDetails.length > 0 ? (
+            repoDetails.map((repo: any, index: number) => {
+              return <Repo key={index} repo={repo} />;
+            })
+          ) : (
+            <div>The user doesnot have any repository</div>
+          )}
         </div>
       </div>
     </div>
