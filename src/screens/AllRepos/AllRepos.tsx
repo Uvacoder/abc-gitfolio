@@ -28,7 +28,8 @@ export default function AllRepos() {
       setPage((page) => page + 1);
       setRepos((nums: any) => [...nums, ...newRepos]);
     } catch (err) {
-      toast.error("Ooops! Some unknown error occured!");
+      console.log(err.response.data.message);
+      toast.error("Oopsie! Some unknown error occured!");
     }
     setLoading(false);
   };

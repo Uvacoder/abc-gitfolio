@@ -24,7 +24,7 @@ export default function Profile() {
         setRepoDetails(allPromise[1]);
       } catch (err) {
         toast.error("No user found!");
-        console.log(err);
+        console.log(err.data);
       }
       setLoading(false);
     })();
