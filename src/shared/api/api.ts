@@ -13,3 +13,8 @@ export async function getUserRepos(username : string,per_page : number){
    const {data} = await  axios.get(API_ENDPOINTS.BASE + API_ENDPOINTS.USER_REPOS(username)+query);
    return data;
 }
+
+export async function getUser(page : number){
+   const {data} = await  axios.get(API_ENDPOINTS.BASE + API_ENDPOINTS.LIST_USERS + "?since=" + page);
+   return data;
+}
