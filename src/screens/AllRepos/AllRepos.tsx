@@ -57,8 +57,7 @@ export default function AllRepos() {
         classNames=""
       >
         {repos.map((repo, index) => {
-          console.log(repo);
-          return <Repo repo={repo} />;
+          return <Repo repo={repo} key={index} />;
         })}
       </InfiniteScroll>
       {loading && <div className="loader-small my-20"></div>}
@@ -79,8 +78,8 @@ export function Header({ id }: Props) {
 
 export function Repo({ repo }: any) {
   return (
-    <div className="flex flex-col md:flex-row p-6 justify-between items-center border mx-4 sm:mx-8 my-4 border-primary rounded-md">
-      <div className="flex flex-col gap-2 md:w-10/12 xl:w-11/12">
+    <div className="flex flex-col sm:flex-row p-6 justify-between items-center border mx-4 sm:mx-8 my-4 border-primary rounded-md">
+      <div className="flex flex-col gap-2 sm:w-10/12 xl:w-11/12">
         <h1 className="font-bold text-2xl gradient-text">{repo.name}</h1>
         <p>
           {repo.description ||
@@ -92,7 +91,7 @@ export function Repo({ repo }: any) {
           <IconText text={repo.open_issues_count} img={Issues} />
         </div>
       </div>
-      <div className="md:w-2/12 xl:w-1/12 mt-4 sm:mt-0">
+      <div className="sm:w-2/12 xl:w-1/12 mt-4 sm:mt-0">
         <p className="border-primary text-primary border-2 rounded-full px-2 py-1 text-center">
           {repo.language}
         </p>
