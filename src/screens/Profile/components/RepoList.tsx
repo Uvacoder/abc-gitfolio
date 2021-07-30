@@ -24,7 +24,7 @@ export default function RepoList({ repoDetails }: any) {
 export function Header() {
   return (
     <div className="flex p-6 justify-between border-gray border-b mb-6">
-      <h1>Harsh's Repository</h1>
+      <h1>User's Repository</h1>
       <div className="flex gap-2 justify-center items-center">
         <h1 className="text-primary font-medium">View All</h1>
         <img src={Link} alt="" className="w-4" />

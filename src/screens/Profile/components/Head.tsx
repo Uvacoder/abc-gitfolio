@@ -12,16 +12,20 @@ export default function Head({ user }: any) {
       <div className="absolute top-0 left-0 right-0 gradient-bg h-72 -z-10" />
       <div className="relative bg-white mx-auto border border-gray rounded-md w-10/12 mt-32 flex flex-col sm:flex-row p-6 gap-5">
         <div className="hidden sm:flex absolute right-0 top-0  m-6 gap-4">
-          <a href={`https://${user.blog}`} target="_blank" rel="noreferrer">
-            <img src={Link} alt="website" />
-          </a>
-          <a
-            href={`https://twitter.com/${user.twitter_username}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img src={Twitter} alt="twitter" />
-          </a>
+          {user.blog && (
+            <a href={`https://${user.blog}`} target="_blank" rel="noreferrer">
+              <img src={Link} alt="website" />
+            </a>
+          )}
+          {user.twitter_username && (
+            <a
+              href={`https://twitter.com/${user.twitter_username}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={Twitter} alt="twitter" />
+            </a>
+          )}
         </div>
         <img
           className="w-48 rounded mx-auto sm:mx-0"
@@ -37,7 +41,7 @@ export default function Head({ user }: any) {
             <IconText
               classNames="hidden sm:flex"
               img={People}
-              text={`${user.followers} Followers || ${user.following} Following`}
+              text={`${user.followers} Followers | ${user.following} Following`}
             />
             {user.location && <IconText img={Location} text={user.location} />}
           </div>
