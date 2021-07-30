@@ -24,7 +24,10 @@ export default function RepoList({ repoDetails, user }: any) {
 export function Header({ user }: any) {
   return (
     <div className="flex p-6 justify-between border-gray border-b mb-6">
-      <h1>{user.name || user.login}'s Repository</h1>
+      <h1 className="hidden sm:block">
+        {user.name || user.login}'s Repository
+      </h1>
+      <h1 className="block sm:hidden">Repositories</h1>
       <div className="flex gap-2 justify-center items-center">
         <NavLink to={"/profile/" + user.login + "/repos"}>
           <h1 className="text-primary font-medium">View All</h1>
