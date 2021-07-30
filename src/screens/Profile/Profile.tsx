@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getUserDetails, getUserRepos } from "../../shared/api/api";
+import ErrorScreen from "../../shared/components/ErrorScreen";
 import Head from "./components/Head";
 import RepoList from "./components/RepoList";
+import NotFound from "../../assets/images/vectors/notfound.svg";
 
 export default function Profile() {
   const { id } = useParams<{ id: string }>();
@@ -20,7 +22,7 @@ export default function Profile() {
         setUser(allPromise[0]);
         setRepoDetails(allPromise[1]);
       } catch (err) {
-        toast("No user found!");
+        toast.error("No user found!");
         console.log(err);
       }
       setLoading(false);
@@ -30,7 +32,14 @@ export default function Profile() {
     return <div>Loading</div>;
   }
   if (!user) {
-    return <div>No User found</div>;
+    return (
+      <>
+        <ErrorScreen
+          text="No Profile found, Please recheck the URL."
+          img={NotFound}
+        />
+      </>
+    );
   }
   return (
     <div className="relative flex justify-start flex-col">
