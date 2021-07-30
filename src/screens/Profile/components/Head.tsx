@@ -4,6 +4,7 @@ import People from "../../../assets/images/people.svg";
 import Repo from "../../../assets/images/repository.svg";
 import Link from "../../../assets/images/link.svg";
 import Twitter from "../../../assets/images/twitter.svg";
+import User from "../../../assets/images/user.svg";
 
 export default function Head({ user }: any) {
   console.log(user);
@@ -37,13 +38,24 @@ export default function Head({ user }: any) {
             {user.name || user.login}
           </h1>
           <div className="mt-6 flex flex-col gap-1">
-            <IconText img={Repo} text={user.public_repos} />
+            {user.bio && (
+              <IconText
+                classNames="hidden sm:flex truncate "
+                img={User}
+                text={user.bio}
+              />
+            )}
             <IconText
               classNames="hidden sm:flex"
               img={People}
               text={`${user.followers} Followers | ${user.following} Following`}
             />
-            {user.location && <IconText img={Location} text={user.location} />}
+            <div className="flex gap-2 mx-auto sm:mx-0">
+              <IconText img={Repo} text={user.public_repos} />
+              {user.location && (
+                <IconText img={Location} text={user.location} />
+              )}
+            </div>
           </div>
         </div>
       </div>

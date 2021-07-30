@@ -1,15 +1,18 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Logo from "../../assets/images/logo-gitfolio.svg";
 export default function Navbar() {
   const [onPhoneNav, setOnPhoneNav] = useState(false);
   return (
     <nav className="bg-white flex items-center justify-between flex-wrap bg-teal-500 p-6">
-      <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <img src={Logo} alt="" className="mr-3 w-10" />
-        <span className="gradient-text font-bold text-2xl tracking-tight">
-          GitFolio
-        </span>
-      </div>
+      <NavLink to="/">
+        <div className="flex items-center flex-shrink-0 text-white mr-6">
+          <img src={Logo} alt="" className="mr-3 w-10" />
+          <span className="gradient-text font-bold text-2xl tracking-tight">
+            GitFolio
+          </span>
+        </div>
+      </NavLink>
       <div className="block sm:hidden">
         <button
           className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
@@ -32,7 +35,9 @@ export default function Navbar() {
       >
         <a
           href="https://github.com"
+          target="_blank"
           className="inline-block text-sm font-medium px-4 py-3 leading-none border rounded border-secondary text-secondary mt-4 lg:mt-0"
+          rel="noreferrer"
         >
           Explore More
         </a>
