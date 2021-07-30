@@ -1,6 +1,6 @@
 interface Props {
   img: string;
-  text: string;
+  text: string | number;
   classNames?: string;
 }
 export default function IconText({ img, text, classNames }: Props) {

@@ -4,7 +4,7 @@ import InfiniteScroll from "../../shared/components/InfiniteScroll";
 import ProfileCard from "./components/ProfileCard";
 
 export default function Landing() {
-  const [users, serUsers] = useState<number[]>([]);
+  const [users, serUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState("");
