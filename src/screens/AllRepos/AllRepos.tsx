@@ -6,6 +6,10 @@ import InfiniteScroll from "../../shared/components/InfiniteScroll";
 import Star from "../../assets/images/star.svg";
 import Fork from "../../assets/images/fork.svg";
 import Issues from "../../assets/images/issues.svg";
+import NotFound from "../../assets/images/vectors/notfound.svg";
+
+import { toast } from "react-toastify";
+import ErrorScreen from "../../shared/components/ErrorScreen";
 
 export default function AllRepos() {
   const { id } = useParams<{ id: string }>();
@@ -15,15 +19,30 @@ export default function AllRepos() {
 
   const [loading, setLoading] = useState(false);
   const loadMoreRepositories = async () => {
-    setLoading(true);
-    const newRepos = await getUserRepos(id, page);
-    if (newRepos.length === 0) {
-      setHasMoreData(false);
+    try {
+      setLoading(true);
+      const newRepos = await getUserRepos(id, page);
+      if (newRepos.length === 0) {
+        setHasMoreData(false);
+      }
+      setPage((page) => page + 1);
+      setRepos((nums: any) => [...nums, ...newRepos]);
+    } catch (err) {
+      toast.error("Ooops! Some unknown error occured!");
     }
-    setPage((page) => page + 1);
-    setRepos((nums: any) => [...nums, ...newRepos]);
     setLoading(false);
   };
+
+  if (!repos) {
+    return (
+      <>
+        <ErrorScreen
+          text="No Profile found, Please recheck the URL."
+          img={NotFound}
+        />
+      </>
+    );
+  }
 
   return (
     <div className="bg-white w-11/12 mx-auto mt-20 border border-gray rounded-md my-8">
