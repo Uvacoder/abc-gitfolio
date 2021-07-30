@@ -1,7 +1,7 @@
 import IconText from "../../../shared/components/IconText";
-
 import Star from "../../../assets/images/star.svg";
 import Fork from "../../../assets/images/fork.svg";
+
 export default function Repo({ repo }: any) {
   return (
     <a href={repo.html_url} target="_blank" rel="noreferrer">

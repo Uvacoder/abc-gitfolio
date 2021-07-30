@@ -2,10 +2,9 @@ import Link from "../../../assets/images/open.svg";
 import Repo from "./Repo";
 
 export default function RepoList({ repoDetails }: any) {
-  console.log(repoDetails);
   return (
     <div className="w-full mx-auto">
-      <div className="mx-auto bg-white border border-gray rounded-md w-10/12 my-8 ">
+      <div className="mx-auto bg-white border border-gray rounded-md w-10/12 my-8">
         <Header />
         <div className="flex flex-row flex-wrap justify-center items-center py-4">
           {repoDetails.length > 0 ? (
